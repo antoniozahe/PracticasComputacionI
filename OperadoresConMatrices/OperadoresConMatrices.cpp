@@ -4,8 +4,6 @@
 #include <ctime>
 using namespace std;
 
-void imprimirMatriz(array<array<int, 5>, 5> A);
-
 int main()
 {
     //Variables constantes para filas y columnas
@@ -13,8 +11,8 @@ int main()
     const int col=5;
     char op;
 
-    array<array<int, col>, fil> A = {};
-    array<array<int, col>, fil> B = {};
+    array<array<float, col>, fil> A = {};
+    array<array<float, col>, fil> B = {};
 
     srand((int)time(0));
 
@@ -22,8 +20,8 @@ int main()
     {
         for (int j = 0; j < col; j++)
         {
-            A[i][j] = (rand() % 9) + 1;
-            B[i][j] = (rand() % 9) + 1;
+           A[i][j] = (rand() % 9)+ 1;
+           B[i][j] = (rand() % 9)+ 1;
         }
     }
 
