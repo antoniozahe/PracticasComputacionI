@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <array>
 
@@ -25,6 +24,12 @@ void VariableIgualaUno(matriz & miMatriz);
 template <typename matriz>
 void Echelon(matriz & miMatriz);
 
+template <typename matriz>
+void RevisarPivote(matriz & miMatriz);
+
+template <typename matriz>
+void CambiarLineas(matriz & miMatriz);
+
 int main()
 {
     // Definimos el número de variables de nuestro sistema
@@ -48,7 +53,7 @@ int main()
     ImprimirMatriz(miMatriz);
 
     // Imprimimos la solución de la matriz
-    //ImprimirSolucion(miMatriz);
+    ImprimirSolucion(miMatriz);
 
     return 0; // Indicamos que salimos del programa con éxito
 }
@@ -65,6 +70,7 @@ void LlenarMatriz(matriz & miMatriz)
         for (int j = 0; j <= variables; j++) {
             cout << "Valor elemento [" << i << "][" << j << "]: ";
             cin >> miMatriz[i][j];
+            
         }
     }
 }
@@ -110,8 +116,9 @@ No regresa ningún valor.
 template <typename matriz>
 void GaussJordan(matriz & miMatriz)
 {
-    Echelon(miMatriz);
-    VariableIgualaUno(miMatriz);
+   RevisarPivote(miMatriz);
+   Echelon(miMatriz);
+   VariableIgualaUno(miMatriz);
 }
 
 template <typename matriz>
@@ -152,3 +159,48 @@ void VariableIgualaUno(matriz & miMatriz)
     }
 }
 
+template <typename matriz>
+void RevisarPivote(matriz & miMatriz)
+{
+    int variables=miMatriz.size();
+   int control =0;
+
+    for (int i=0; i<variables; i++)
+    {
+        for (int j=0; j<variables+1; j++)
+        {
+            if(miMatriz[i][i]!=0)
+            {
+                control=0;
+            }
+            else
+            {
+                control=1;
+            }
+        }
+    }
+    if(control=1)
+    {
+        CambiarLineas(miMatriz);
+    }
+}
+template <typename matriz>
+void CambiarLineas(matriz & miMatriz)
+{
+    int variables=miMatriz.size();
+    array <array<float, 4>, 3> temp = {0};
+
+    for (int i=0; i<variables; i++)
+    {
+        for (int j=0; j<variables+1; j++)
+        {
+            temp[i][j]=miMatriz[i][j];
+        }
+    }
+    for (int j=0; j<variables+1; j++)
+    {
+        miMatriz[0][j]=temp[1][j];
+        miMatriz[1][j]=temp[2][j];
+        miMatriz[2][j]=temp[0][j];
+    }
+}
