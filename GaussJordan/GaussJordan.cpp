@@ -44,14 +44,8 @@ int main()
     // Pedimos al usuario que llene la matriz
     LlenarMatriz(miMatriz);
 
-    cout<<"Su Matriz Inicial Es:"<<endl;
-    ImprimirMatriz(miMatriz);
-
     // Aplicamos el método de Gauss-Jordan sobre nuestra matriz
     GaussJordan(miMatriz);
-
-    cout<<"Row Echelon Form:"<<endl;
-    ImprimirMatriz(miMatriz);
 
     // Imprimimos la solución de la matriz
     ImprimirSolucion(miMatriz);
@@ -105,7 +99,7 @@ void ImprimirSolucion(matriz & miMatriz)
     {
         if(isnan(miMatriz[i][variables]))
         {
-            cout<<"Su Sistema no tiene Solucion"<<endl;
+            cout<<"Error: Su Sistema no tiene Solucion"<<endl;
             return;
         }
         else
