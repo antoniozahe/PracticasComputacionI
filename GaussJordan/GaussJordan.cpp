@@ -1,5 +1,6 @@
 #include <iostream>
 #include <array>
+#include <cmath>
 
 // Añadir std para fácil llamado de funciones
 using namespace std;
@@ -70,7 +71,7 @@ void LlenarMatriz(matriz & miMatriz)
         for (int j = 0; j <= variables; j++) {
             cout << "Valor elemento [" << i << "][" << j << "]: ";
             cin >> miMatriz[i][j];
-            
+
         }
     }
 }
@@ -102,8 +103,16 @@ void ImprimirSolucion(matriz & miMatriz)
 
     for(int i=0; i<variables; i++)
     {
-        cout<<"x ["<<i<<"] = ";
-        cout<<miMatriz[i][variables]<<endl;
+        if(isnan(miMatriz[i][variables]))
+        {
+            cout<<"Su Sistema no tiene Solucion"<<endl;
+            return;
+        }
+        else
+        {
+            cout << "x [" << i << "] = ";
+            cout << miMatriz[i][variables] << endl;
+        }
     }
 
 }
