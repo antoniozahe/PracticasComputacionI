@@ -104,7 +104,7 @@ void ImprimirSolucion(matriz & miMatriz)
         }
         else
         {
-            cout << "x [" << i << "] = ";
+            cout << "x" << i << " = ";
             cout << miMatriz[i][variables] << endl;
         }
     }
