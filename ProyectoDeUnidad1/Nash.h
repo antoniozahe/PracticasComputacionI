@@ -1,28 +1,32 @@
-/*
- * Created by Antonio,Oliver,Alfonso on 11/11/2020.
-*/
 
-#ifndef PROYECTODEUNIDAD1_NASH_H
-#define PROYECTODEUNIDAD1_NASH_H
+#ifndef NASH_H
+#define NASH_H
 
 #include <iostream>
-#include <array>
-#include <limits>
 
-class Solucion{
+using namespace std;
+
+class Solucion
+{
 public:
-    Solucion(float A[][2], float B[][2]);
+    // Constructor
+    Solucion(float MA[][2], float MB[][2]);
 
-    void ImprimirMatrices();
-    void RevisarMatriz();
-    void Equilibrio();
-    void DeterminarMejorCaso();
+    // Métodos
+    void revisarMatrizA();
+    void revisarMatrizB();
+    void imprimirMatrices();
+    void imprimirMatrizN();
+    void equilibrioNash();
+
 
 private:
-    float A[2][2];
-    float B[2][2];
-    int a{0}, b{0}, c{0}, d{0};
-    float CasoA, CasoB, CasoC, CasoD;
+    float a = 0;
+    float b = 0;
+    float c = 0;
+    float d = 0;
+    float A[2][2] = { 0 }, B[2][2] = { 0 };
+    float N[2][2] = { {a, b}, {c, d} };
 };
 
-#endif //PROYECTODEUNIDAD1_NASH_H
+#endif

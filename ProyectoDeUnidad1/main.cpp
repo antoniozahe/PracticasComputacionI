@@ -1,6 +1,6 @@
+
 /*
- *EQUILIBRIO DE NASH Y LA MEJOR DECISIÓN
- * Created by Antonio,Oliver,Alfonso on 11/11/2020.
+Proyecto Computacion unidad 1
 */
 #include <iostream>
 #include "Nash.h"
@@ -8,38 +8,43 @@
 using namespace std;
 
 template <typename matriz>
-void LlenarMatrizMA(matriz & MA);
+void llenarMatrizMA(matriz& MA);
 template <typename matriz>
-void LlenarMatrizMB(matriz & MB);
+void llenarMatrizMB(matriz& MB);
 
-int main ()
+int main()
 {
+    // Inicializar Matrices
+    float MA[2][2] = { 0 };
+    float MB[2][2] = { 0 };
 
-    float MA[2][2];
-    float MB[2][2]={{5, 10},
-                   {0, 1}};
+    // Llenar valores de la matriz
+    llenarMatrizMA(MA);
+    cout << endl;
+    llenarMatrizMB(MB);
+    cout << endl;
 
-    cout<<"Ingrese las Opciones del Prisionero A:"<<endl;
-    LlenarMatrizMA(MA);
+    //
+    Solucion Juego(MA, MB);
+    Juego.imprimirMatrices();
+    cout << endl;
 
-    cout<<"Ingrese las Opciones del Prisionero B:"<<endl;
-    LlenarMatrizMB(MB);
-
-    Solucion miJuego(MA, MB);
-
-    miJuego.ImprimirMatrices();
-    miJuego.RevisarMatriz();
-    cout<<"Encontramos Equilibrio de Nash cuando:"<<endl;
-    miJuego.Equilibrio();
-    miJuego.DeterminarMejorCaso();
+    // Equilibrio de Nash
+    Juego.revisarMatrizA();
+    Juego.revisarMatrizB();
+    Juego.imprimirMatrizN();
+    cout << endl;
+    Juego.equilibrioNash();
 }
 
 template <typename matriz>
-void LlenarMatrizMA(matriz & MA)
+void llenarMatrizMA(matriz& MA)
 {
+    cout << "Ingrese los pagos del jugador 1" << endl;
     for (int i = 0; i < 2; i++) {
+        cout << "Pagos opcion " << i+1 << endl;
         for (int j = 0; j < 2; j++) {
-            cout << "Valor elemento [" << i << "][" << j << "]: ";
+            cout << "Valor elemento [" << i << "][" << j << "]:";
             cin >> MA[i][j];
 
         }
@@ -47,13 +52,13 @@ void LlenarMatrizMA(matriz & MA)
 }
 
 template <typename matriz>
-void LlenarMatrizMB(matriz & MB)
+void llenarMatrizMB(matriz& MB)
 {
+    cout << "Ingrese los pagos del jugador 2" << endl;
     for (int i = 0; i < 2; i++) {
         for (int j = 0; j < 2; j++) {
-            cout << "Valor elemento [" << i << "][" << j << "]: ";
+            cout << "Valor elemento [" << i << "][" << j << "]:";
             cin >> MB[i][j];
-
         }
     }
 }
