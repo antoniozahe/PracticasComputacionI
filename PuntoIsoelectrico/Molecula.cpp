@@ -16,58 +16,94 @@ void Molecula::AgregarGrupo(Grupo grupito) {
 }
 
 float Molecula::CalcularPuntoIsoelectrico() {
-    float PI, ph, carga=0;
-    int numGrupos=CantidadGrupos();
+    float ph, carga;
+    numGrupos= CantidadGrupos();
     vector <float> todospk(numGrupos);
 
-    for(int i=0; i<numGrupos; i++)
+    if(numGrupos==2)
     {
-        todospk[i]=todosGrupos[i].getpk();
-    }
-
-    for (int i=0; i<numGrupos; i++)
-    {
-        float sup=0, inf=0;
-        ph=todospk[i]+0.01;
-        carga=CargaMolecula(ph);
-        if(carga==0)
+        for(int i=0; i<numGrupos; i++)
         {
-            inf=todospk[i];
-            sup=todospk[i+1];
-            return (sup+inf)/2;
+            todospk[i]=todosGrupos[i].getpk();
+
+        }
+
+        for (int i=0; i<numGrupos; i++)
+        {
+            ph=todospk[i];
+            carga=CargaMolecula(ph);
+
+            if(carga==0)
+            {
+                float inf=todospk[i];
+                float sup=todospk[i+1];
+
+                return (inf+sup)/2;
+
+            }
+
         }
     }
+
+    if(numGrupos>=3)
+    {
+        for(int i=0; i<numGrupos; i++)
+        {
+            todospk[i]=todosGrupos[i].getpk();
+
+        }
+
+        for (int i=0; i<numGrupos; i++)
+        {
+            ph=todospk[i];
+            carga=CargaMolecula(ph);
+
+            if(carga==0)
+            {
+                float inf=todospk[i+1];
+                float sup=todospk[i+2];
+
+                return (inf+sup)/2;
+
+            }
+
+        }
+    }
+
 }
 
 int Molecula::CargaMolecula(float ph)
 {
-    int numGrupos=CantidadGrupos();
+    numGrupos= CantidadGrupos();
     vector <float> todospk(numGrupos);
     vector <float> todoscargas(numGrupos);
-
 
     for (int i=0;i<numGrupos;i++)
     {
         todospk[i]=todosGrupos[i].getpk();
         todoscargas[i]=todosGrupos[i].getcarga();
-        ph+=todosGrupos[i].getpk()+0.001;
+     }
 
+    for (int i=0;i<numGrupos;i++)
+    {
         if(ph<=todospk[i])
         {
             int CargaMol=0;
             CargaMol=CargaMol+todoscargas[i]+1;
             return CargaMol;
         }
-        if(ph>todospk[i])
+        else
         {
             int CargaMol=0;
             CargaMol=CargaMol+todoscargas[i];
             return CargaMol;
         }
     }
+    return 0;
 }
 
 int Molecula::CantidadGrupos() {
-    return 0;
+    int cant=todosGrupos.size();
+    return cant;
 }
 
