@@ -16,13 +16,13 @@ Se comparó con el mismo sistema de ecuaciones, para mantener la prueba lo más 
 [ -3	-1	 2	| -11]
 [ -2	 1	 2	|  -3]
 
-#Donde las soluciones esperadas son:
+# Donde las soluciones esperadas son:
 x0 =  2
 x1 =  3
 x2 = -1
 ```
 
-Los tiempos de ejecución (en microsegundos) en C++ fueron los siguientes:
+Los tiempos de ejecución (en microsegundos) del método Gauss-Jordan fueron los siguientes:
 
 |Prueba    | C++ | Python | Numpy |
 |:------:|:------:|:------:|:------:|
