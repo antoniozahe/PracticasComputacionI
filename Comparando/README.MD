@@ -5,9 +5,9 @@
 Se comparó el tiempo de ejecución de tres algoritmos prácticamente iguales de Gauss Jordan; uno en C++ y dos en Python, uno utilizando arrays de la libreria "Numpy" y otro  usando lists.
 
 Códigos Usados:
-1. C++
-2. Python Puro
-3. Python Numpy
+1. [C++](https://github.com/antoniozahe/PracticasComputacionI/blob/main/Comparando/GaussJordanC.cpp)
+2. [Python Puro](https://github.com/antoniozahe/PracticasComputacionI/blob/main/Comparando/GaussJordanP.py)
+3. [Python Numpy](https://github.com/antoniozahe/PracticasComputacionI/blob/main/Comparando/GaussJordanNumpy.py)
 
 Se comparó con el mismo sistema de ecuaciones, para mantener la prueba lo más controlada posible:
 
@@ -24,19 +24,19 @@ x2 = -1
 
 Los tiempos de ejecución (en microsegundos) en C++ fueron los siguientes:
 
-    Prueba    | C++ | Python | Numpy 
-:--:|:--:|:--:|:--:
-1|3.4|75.59|69.1
-2|3.9|56.1|67.9
-3|3.4|58.9|69.6
-4|3.3|55.5|67.0
-5|3.7|60.4|65.6
-6|3.7|56.9|64.2
-7|3.3|57.4|68.5
-8|3.7|55.8|68.9
-9|3.5|56.7|62.3
-10|3.4|56.1|65.5
-**Promedio**|**3.53**|**58.94**|**66.86**
+|Prueba    | C++ | Python | Numpy |
+|:------:|:------:|:------:|:------:|
+|1|3.4|75.59|69.1|
+|2|3.9|56.1|67.9|
+|3|3.4|58.9|69.6|
+|4|3.3|55.5|67.0|
+|5|3.7|60.4|65.6|
+|6|3.7|56.9|64.2|
+|7|3.3|57.4|68.5|
+|8|3.7|55.8|68.9|
+|9|3.5|56.7|62.3|
+|10|3.4|56.1|65.5|
+|**Promedio**|**3.53**|**58.94**|**66.86**|
 
 ### CONCLUSIONES
 
